@@ -16,6 +16,10 @@
           'label': 'Toggle'
           'command': 'talking-mango:toggle'
         }
+        {
+          'label': 'Start Listening'
+          'command': 'talking-mango:start'
+        }
       ]
     ]
   }

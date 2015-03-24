@@ -9,3 +9,4 @@
 # https://atom.io/docs/latest/advanced/keymaps
 '.workspace':
   'ctrl-alt-o': 'talking-mango:toggle'
+  'ctrl-alt-m': 'talking-mango:start'
