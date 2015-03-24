@@ -3,7 +3,7 @@ class TalkingMangoView
   constructor: (serializeState) ->
     # Create root element
     @element = document.createElement('div')
-    @element.classList.add('talking-mango',  'overlay', 'from-top')
+    @element.classList.add('talking-mango',  'block')
 
     # Create message element
     message = document.createElement('div')
@@ -54,4 +54,4 @@ class TalkingMangoView
     if @element.parentElement?
       @element.remove()
     else
-      atom.workspaceView.append(@element)
+      atom.workspace.addBottomPanel(item: @element)
