@@ -1,5 +1,6 @@
 module.exports =
 class TalkingMangoView
+
   constructor: (serializeState) ->
     # Create root element
     @element = document.createElement('div')
@@ -12,11 +13,12 @@ class TalkingMangoView
     @element.appendChild(message)
 
     @button = document.createElement("button")
-
+    @button.classList.add('mic-button')
+    @button.onclick = "start()"
     elem = document.createElement("img")
     elem.src = "atom://talking-mango/images/test.png"
-    elem.height = "60"
-    elem.width = "60"
+    elem.height = "30"
+    elem.width = "25"
     @button.appendChild(elem)
 
     @element.appendChild(@button)
@@ -33,6 +35,7 @@ class TalkingMangoView
     @element.remove()
 
   start: ->
+    console.log "start was called"
     msg = new SpeechSynthesisUtterance()
     msg.text = "Hello World"
     window.speechSynthesis.speak(msg)
