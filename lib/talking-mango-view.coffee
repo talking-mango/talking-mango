@@ -11,9 +11,19 @@ class TalkingMangoView
     message.classList.add('message')
     @element.appendChild(message)
 
+    @button = document.createElement("button")
+
+    elem = document.createElement("img")
+    elem.src = "atom://talking-mango/images/test.png"
+    elem.height = "60"
+    elem.width = "60"
+    @button.appendChild(elem)
+
+    @element.appendChild(@button)
+
+
     # Register command that toggles this view
     atom.commands.add 'atom-workspace', 'talking-mango:toggle': => @toggle()
-    atom.commands.add 'atom-workspace', 'talking-mango:start': => @start()
 
   # Returns an object that can be retrieved when package is activated
   serialize: ->
