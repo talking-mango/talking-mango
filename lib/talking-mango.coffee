@@ -8,6 +8,3 @@ module.exports =
 
   deactivate: ->
     @talkingMangoView.destroy()
-
-  serialize: ->
-    talkingMangoViewState: @talkingMangoView.serialize()

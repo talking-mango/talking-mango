@@ -19,6 +19,7 @@ class TalkingMangoView
     elem.src = "atom://talking-mango/images/test.png"
     elem.height = "30"
     elem.width = "25"
+    
     @button.appendChild(elem)
 
     @element.appendChild(@button)
@@ -26,9 +27,6 @@ class TalkingMangoView
 
     # Register command that toggles this view
     atom.commands.add 'atom-workspace', 'talking-mango:toggle': => @toggle()
-
-  # Returns an object that can be retrieved when package is activated
-  serialize: ->
 
   # Tear down any state and detach
   destroy: ->
