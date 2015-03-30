@@ -14,12 +14,12 @@ class TalkingMangoView
 
     @button = document.createElement("button")
     @button.classList.add('mic-button')
-    @button.onclick = "start()"
+    @button.onclick = @start
     elem = document.createElement("img")
     elem.src = "atom://talking-mango/images/test.png"
     elem.height = "30"
     elem.width = "25"
-    
+
     @button.appendChild(elem)
 
     @element.appendChild(@button)
@@ -50,6 +50,7 @@ class TalkingMangoView
       console.log "end"
 
     recognition.onresult = (event) ->
+      console.log "onresult was called"
       i = event.resultIndex
       while i < event.results.length
           if event.results[i].isFinal
