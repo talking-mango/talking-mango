@@ -43,8 +43,7 @@ class TalkingMangoView
   destroy: ->
     @element.remove()
 
-
-# atom.workspace.activePaneItem.getSelection().insertText(text + "\n")
+  # Start talking
   start: (recognition, buttonId, callback) ->
 
     btn = document.getElementById(buttonId)
@@ -80,88 +79,6 @@ class TalkingMangoView
           i++
 
       recognition.start()
-
-  # startTalkMango: ->
-  #
-  #
-  #   btn = document.getElementById('btn-talk-mango')
-  #
-  #   if btn.classList.contains('btn-error')
-  #     text = document.getElementById('intermediate-result').textContent
-  #     if text.trim() != ''
-  #       console.log text
-  #     recognition.start()
-  #     recognition.stop()
-  #     console.log "Stopped Listening"
-  #   else
-  #     console.log "Started Listening"
-  #     document.getElementById('intermediate-result').textContent = ''
-  #     recognition.onstart = () ->
-  #       btn = document.getElementById('btn-talk-mango')
-  #       btn.classList.remove('btn-warning')
-  #       btn.classList.add('btn-error')
-  #       btn.textContent = "Stop Listening"
-  #
-  #     recognition.onend = () ->
-  #       btn = document.getElementById('btn-talk-mango')
-  #       btn.classList.remove('btn-error')
-  #       btn.classList.add('btn-warning')
-  #       btn.textContent = "Talk Mango"
-  #
-  #     recognition.onresult = (event) ->
-  #       i = event.resultIndex
-  #       dumb = document.getElementById('intermediate-result')
-  #       dumb.textContent = ''
-  #       while i < event.results.length
-  #         if event.results[i].isFinal
-  #           console.log event.results[i][0].transcript
-  #         else
-  #           dumb.textContent += event.results[i][0].transcript
-  #         i++
-  #
-  #     recognition.start()
-  #
-  # startTranscribe: ->
-  #   recognition = new webkitSpeechRecognition()
-  #   recognition.continuous = true
-  #   recognition.interimResults = true
-  #
-  #   btn = document.getElementById('btn-transcribe')
-  #
-  #   if btn.classList.contains('btn-error')
-  #     text = document.getElementById('intermediate-result').textContent
-  #     if text.trim() != ''
-  #
-  #     recognition.start()
-  #     recognition.stop()
-  #     console.log "Stopped Listening"
-  #   else
-  #     console.log "Started Listening"
-  #     document.getElementById('intermediate-result').textContent = ''
-  #     recognition.onstart = () ->
-  #       btn = document.getElementById('btn-transcribe')
-  #       btn.classList.remove('btn-primary')
-  #       btn.classList.add('btn-error')
-  #       btn.textContent = "Stop Listening"
-  #
-  #     recognition.onend = () ->
-  #       btn = document.getElementById('btn-transcribe')
-  #       btn.classList.remove('btn-error')
-  #       btn.classList.add('btn-primary')
-  #       btn.textContent = "Transcribe"
-  #
-  #     recognition.onresult = (event) ->
-  #       i = event.resultIndex
-  #       dumb = document.getElementById('intermediate-result')
-  #       dumb.textContent = ''
-  #       while i < event.results.length
-  #         if event.results[i].isFinal
-  #           atom.workspace.activePaneItem.getSelection().insertText(event.results[i][0].transcript + "\n")
-  #         else
-  #           dumb.textContent += event.results[i][0].transcript
-  #         i++
-  #
-  #     recognition.start()
 
   # Toggle the visibility of this view
   toggle: ->
