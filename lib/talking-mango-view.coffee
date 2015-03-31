@@ -1,7 +1,11 @@
+TalkingMangoParse = require './talking-mango-parse'
+
 module.exports =
 class TalkingMangoView
 
   constructor: (serializeState) ->
+
+    parse = new TalkingMangoParse()
 
     recognition = new webkitSpeechRecognition()
     recognition.continuous = true
@@ -11,7 +15,7 @@ class TalkingMangoView
       @start(recognition, 'btn-transcribe', (text) -> atom.workspace.activePaneItem.getSelection().insertText(text + "\n"))
 
     doTalkMango = =>
-      @start(recognition, 'btn-talk-mango', (text) -> console.log text)
+      @start(recognition, 'btn-talk-mango', (text) -> atom.workspace.activePaneItem.getSelection().insertText(parse.parse(text)))
 
     # Create root element
     @element = document.createElement('div')
@@ -56,6 +60,7 @@ class TalkingMangoView
       recognition.stop()
       console.log "Stopped Listening"
     else
+      atom.beep()
       console.log "Started Listening"
       document.getElementById('intermediate-result').textContent = ''
 
