@@ -55,7 +55,9 @@ class TalkingMangoView
     btnText = btn.textContent
     timeoutReached = false
 
-
+    console.log "enable timeout: " + atom.config.get('talking-mango.enableTimeout')
+    console.log "timeout: " + atom.config.get('talking-mango.timeout')
+    
     if btn.classList.contains('btn-error')
       text = document.getElementById('intermediate-result').textContent
       if text.trim() != ''
@@ -76,7 +78,7 @@ class TalkingMangoView
         btn.classList.remove('btn-error')
         clearTimeout timeoutId
         btn.textContent = btnText
-        if timeoutReached
+        if timeoutReached and atom.config.get('talking-mango.enableTimeout')
           recognition.start()
           timeoutReached = false
 
@@ -99,7 +101,7 @@ class TalkingMangoView
           console.log "timeout reached"
           recognition.stop()
           timeoutReached = true
-        ), 800
+        ), atom.config.get('talking-mango.timeout')
 
       recognition.start()
 
