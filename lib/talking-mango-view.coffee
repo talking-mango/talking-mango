@@ -10,12 +10,13 @@ class TalkingMangoView
     recognition = new webkitSpeechRecognition()
     recognition.continuous = true
     recognition.interimResults = true
+    timeoutId = null
 
     doTranscribe = =>
-      @start(recognition, 'btn-transcribe', (text) -> atom.workspace.activePaneItem.getSelection().insertText(text + "\n"))
+      @start(recognition, 'btn-transcribe', timeoutId, (text) -> atom.workspace.activePaneItem.getSelection().insertText(text + "\n"))
 
     doTalkMango = =>
-      @start(recognition, 'btn-talk-mango', (text) -> atom.workspace.activePaneItem.getSelection().insertText(parse.parse(text)))
+      @start(recognition, 'btn-talk-mango', timeoutId, (text) -> atom.workspace.activePaneItem.getSelection().insertText(parse.parse(text)))
 
     # Create root element
     @element = document.createElement('div')
@@ -48,10 +49,12 @@ class TalkingMangoView
     @element.remove()
 
   # Start talking
-  start: (recognition, buttonId, callback) ->
+  start: (recognition, buttonId, timeoutId, callback) ->
 
     btn = document.getElementById(buttonId)
     btnText = btn.textContent
+    timeoutReached = false
+
 
     if btn.classList.contains('btn-error')
       text = document.getElementById('intermediate-result').textContent
@@ -67,21 +70,36 @@ class TalkingMangoView
       recognition.onstart = () ->
         btn.classList.add('btn-error')
         btn.textContent = "Stop Listening"
+        timeoutReached = false
 
       recognition.onend = () ->
         btn.classList.remove('btn-error')
+        clearTimeout timeoutId
         btn.textContent = btnText
+        if timeoutReached
+          recognition.start()
+          timeoutReached = false
 
       recognition.onresult = (event) ->
         i = event.resultIndex
         dumb = document.getElementById('intermediate-result')
         dumb.textContent = ''
+
         while i < event.results.length
+
           if event.results[i].isFinal
             callback event.results[i][0].transcript
           else
             dumb.textContent += event.results[i][0].transcript
           i++
+
+
+        clearTimeout timeoutId
+        timeoutId = setTimeout (->
+          console.log "timeout reached"
+          recognition.stop()
+          timeoutReached = true
+        ), 800
 
       recognition.start()
 
