@@ -2,9 +2,10 @@ module.exports =
   class TalkingMangoParse
 
     constructor: ->
-      @createClass = /.*?create.*?class(.*)/
-      @createFunction = /.*?create.*?function(.*)/
-      @createVariable = /.*?create.*?variable(.*).*?and assign value(.*)/
+      @createClass = /.*?create.*?class(.+)/
+      @createFunction = /.*?create.*?function(.+)/
+      @createVariable = /.*?create.*?variable(.+).*?and assign value(.+)/
+      @endSection = /.*?end section.*/
 
     parse: (text) ->
       if matches = @createClass.exec(text)
