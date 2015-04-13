@@ -24,7 +24,7 @@ module.exports =
       if matches = @returnVariable.exec(text)
         return @tabOver() + "return " + matches[1].trim().split(" ").join("_") + "\n"
       if matches = @returnValue.exec(text)
-        return @tabOver() + "return " + mattches[1].trim() + "\n"
+        return @tabOver() + "return " + matches[1].trim() + "\n"
       if matches = @endSection.exec(text)
         if @currentTabDepth > 1
           @currentTabDepth = @currentTabDepth - 1
