@@ -6,7 +6,7 @@ Talk your code
 
 ## Create a class
 To create a new class mention `create class` followed by the name of the class you want to create.
-Example: `Create class Apple` or `Create a new class Apple`
+Example: `Create class apple` or `Create a new class apple`
 
 ## Create a function
 To create a new function mention `create function` followed by the name of the function you want to create.
