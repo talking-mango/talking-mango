@@ -10,12 +10,12 @@ Example: `Create class Apple` or `Create a new class Apple`
 
 ## Create a function
 To create a new function mention `create function` followed by the name of the function you want to create.
-`Create function to string` or `Create a new function to string`
+Example: `Create function to string` or `Create a new function to string`
 
 ## Create a variable
 To create a new variable mention `create variable` followed by the name of the variable and tell it to `assign value` followed by the value.
-`Create variable cat and assign value 42`
+Example: `Create variable cat and assign value 42`
 
 ## End section
 To deindent a section, mention `end section`.
-`end section`
+Example: `end section`
