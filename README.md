@@ -1,5 +1,17 @@
-# talking-mango package
+# Talking Mango
 
-A short description of your package.
+Talk your code
 
-![A screenshot of your spankin' package](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)
+# Commands
+
+## Create a class
+`Create class Apple` or `Create a new class Apple`
+
+## Create a function
+`Create function to string` or `Create a new function to string`
+
+## Create a variable
+`Create variable cat and assign value 42`
+
+## End section
+`end section`
