@@ -4,7 +4,7 @@
   "version": "0.0.3",
   "description": "A short description of your package",
   "main": "./lib/talking-mango",
-  "repository": "https://github.com/atom/talking-mango",
+  "repository": "https://github.com/talking-mango/talking-mango",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
